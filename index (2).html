@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optibat BW | Optimisation Énergétique & Rénovation en Belgique</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0F291E',     /* Very deep forest green */
+                            green: '#1B4332',    /* Main deep forest green */
+                            sedge: '#2D6A4F',    /* Medium sage/forest */
+                            leaf: '#52B788',     /* Vibrant ecology green */
+                            lightleaf: '#D8F3DC',/* Soft background green */
+                            navy: '#0F2C59',     /* Trust navy blue */
+                            softbg: '#F8F9FA',   /* Ecru/Off-white main background */
+                            cardbg: '#FFFFFF',
+                            accent: '#D97706'    /* Warm copper/amber accent */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(15, 41, 30, 0.95) 0%, rgba(27, 67, 50, 0.88) 60%, rgba(15, 44, 89, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        .modal-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-scroll::-webkit-scrollbar-track {
+            background: #F1F5F9;
+            border-radius: 8px;
+        }
+        .modal-scroll::-webkit-scrollbar-thumb {
+            background: #2D6A4F;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-brand-softbg antialiased selection:bg-brand-leaf selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-brand-dark text-emerald-100 text-xs py-2 px-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-2">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-leaf"></i> Brabant Wallon & Toute la Belgique</span>
+                <span class="hidden md:inline-block text-emerald-600">•</span>
+                <span class="hidden md:flex items-center gap-1.5"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-leaf"></i> Expert Primes & Subventions Régionales</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="mailto:optibatbw@gmail.com" class="hover:text-white transition flex items-center gap-1"><i data-lucide="mail" class="w-3.5 h-3.5"></i> optibatbw@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <header class="sticky top-0 z-40 glass-header border-b border-slate-200/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- LOGO -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-brand-green flex items-center justify-center text-white shadow-md shadow-brand-green/20 group-hover:bg-brand-sedge transition">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-brand-leaf"></i>
+                    </div>
+                    <div>
+                        <span class="font-heading font-extrabold text-2xl tracking-tight text-brand-dark block leading-none">OPTIBAT <span class="text-brand-leaf">BW</span></span>
+                        <span class="text-[10px] font-semibold tracking-widest text-slate-500 uppercase">Efficacité Énergétique</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP MENU -->
+                <nav class="hidden lg:flex items-center gap-8 font-medium text-slate-700 text-sm">
+                    <a href="#services" class="hover:text-brand-green transition-colors">Nos Services</a>
+                    <a href="#marques" class="hover:text-brand-green transition-colors">Partenaires & Marques</a>
+                    <a href="#pourquoi" class="hover:text-brand-green transition-colors">Pourquoi Optibat</a>
+                    <a href="#primes" class="hover:text-brand-green transition-colors">Primes & PEB</a>
+                </nav>
+
+                <!-- CTA BUTTON -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="openFormModal()" class="bg-brand-green hover:bg-brand-dark text-white font-semibold text-sm px-5 py-3 rounded-xl shadow-lg shadow-brand-green/20 hover:shadow-xl transition flex items-center gap-2 group">
+                        <i data-lucide="clipboard-list" class="w-4 h-4 text-brand-leaf group-hover:scale-110 transition-transform"></i>
+                        <span>Étude Thermique Sur-Mesure</span>
+                    </button>
+                </div>
+
+                <!-- MOBILE MENU BUTTON -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MOBILE NAVIGATION PANEL -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium">Nos Services</a>
+            <a href="#marques" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium">Partenaires & Marques</a>
+            <a href="#pourquoi" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium">Pourquoi Optibat</a>
+            <a href="#primes" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium">Primes PEB</a>
+            <button onclick="toggleMobileMenu(); openFormModal();" class="w-full mt-2 bg-brand-green text-white py-3 rounded-xl font-semibold flex justify-center items-center gap-2">
+                <i data-lucide="clipboard-list" class="w-4 h-4 text-brand-leaf"></i>
+                Demander une étude préalable
+            </button>
+        </div>
+    </header>
+
+    <section class="hero-gradient text-white py-20 lg:py-28 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold backdrop-blur-md">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        Expertise Énergétique Globale en Belgique
+                    </div>
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+                        Réduisez vos factures, <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-brand-leaf to-amber-300">Maximisez votre confort.</span>
+                    </h1>
+                    <p class="text-slate-200 text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Optibat BW vous accompagne dans la rénovation complète de votre bâtiment : de l'isolation à la production d'énergie verte. Profitez d'une solution rentable, durable et adaptée aux exigences PEB belges.
+                    </p>
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button onclick="openFormModal()" class="bg-brand-leaf hover:bg-emerald-400 text-brand-dark font-bold text-base px-8 py-4 rounded-xl shadow-xl shadow-emerald-900/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                            Démarrer mon Étude Thermique
+                        </button>
+                        <a href="#services" class="bg-white/10 hover:bg-white/20 text-white font-semibold text-base px-6 py-4 rounded-xl backdrop-blur-md border border-white/20 transition flex items-center justify-center gap-2">
+                            <span>Découvrir nos 6 expertises</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- TRUST BADGES -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-white/10 text-center lg:text-left">
+                        <div>
+                            <div class="font-heading text-2xl sm:text-3xl font-bold text-white">100%</div>
+                            <div class="text-xs text-slate-300">Sur-Mesure</div>
+                        </div>
+                        <div>
+                            <div class="font-heading text-2xl sm:text-3xl font-bold text-brand-leaf">Certifié</div>
+                            <div class="text-xs text-slate-300">Normes Belges & PEB</div>
+                        </div>
+                        <div>
+                            <div class="font-heading text-2xl sm:text-3xl font-bold text-white">A à Z</div>
+                            <div class="text-xs text-slate-300">Accompagnement Primes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HERO CARD SUMMARY -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 text-slate-800 shadow-2xl border border-white/40">
+                        <div class="flex items-center gap-3 pb-4 border-b border-slate-100">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-brand-green">
+                                <i data-lucide="calculator" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg">Votre Bâtiment Optimisé</h3>
+                                <p class="text-xs text-slate-500">Approche systémique intégrée</p>
+                            </div>
+                        </div>
+
+                        <div class="py-6 space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-sm text-slate-900">Enveloppe thermique performante</strong>
+                                    <p class="text-xs text-slate-500">Toiture, Murs et Châssis haute isolation.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-sm text-slate-900">Chauffage Éco-responsable</strong>
+                                    <p class="text-xs text-slate-500">PAC (Daikin, Samsung, Fujitsu) & Biomasse (ETA).</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-sm text-slate-900">Autonomie Électrique</strong>
+                                    <p class="text-xs text-slate-500">Panneaux photovoltaïques & Stockage par batterie.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 mb-6">
+                            <div class="flex items-center justify-between text-xs text-slate-600 mb-1">
+                                <span>Étape recommandée</span>
+                                <span class="font-bold text-brand-green">100% Gratuite</span>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-800">Remplissez notre questionnaire détaillé pour recevoir votre plan d'action personnalisé.</p>
+                        </div>
+
+                        <button onclick="openFormModal()" class="w-full bg-brand-green hover:bg-brand-dark text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                            <span>Lancer le Questionnaire en Ligne</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-brand-sedge font-bold text-xs uppercase tracking-widest bg-emerald-100/80 px-3 py-1 rounded-full">Nos Domaines d'Intervention</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-dark mt-3">Solutions Intégrées d'Optimisation</h2>
+            <p class="text-slate-600 mt-4 text-base">
+                Pour garantir un confort thermique inégalé et diviser vos empreintes carbone et budgétaire, nous combinons les 6 piliers clés du bâtiment vert.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- SERVICE 1: TOITURE -->
+            <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-700 mb-6">
+                        <i data-lucide="home" class="w-7 h-7"></i>
+                    </div>
+                    <span class="text-xs font-bold text-amber-600 tracking-wider uppercase">Jusqu'à 30% de pertes en moins</span>
+                    <h3 class="font-heading font-bold text-xl text-slate-900 mt-1 mb-3">Toiture & Isolation Toiture</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        La toiture est le premier poste de déperdition de chaleur. Nous isolons vos combles perdus, aménagés ou par l'extérieur (Sarking) avec des matériaux éco-certifiés à haut déphasage thermique.
+                    </p>
+                </div>
+                <ul class="text-xs font-medium text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Sarking & Combles perdus</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Matériaux biosourcés disponibles</li>
+                </ul>
+            </div>
+
+            <!-- SERVICE 2: MURS -->
+            <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 mb-6">
+                        <i data-lucide="layers" class="w-7 h-7"></i>
+                    </div>
+                    <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase">Confort Été comme Hiver</span>
+                    <h3 class="font-heading font-bold text-xl text-slate-900 mt-1 mb-3">Isolation des Murs & Coulisses</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Supprimez l'effet de paroi froide. Isolation des façades par l'extérieur (ITE), par l'intérieur (ITI) ou par injection directe dans la coulisse de creux typique des briques belges.
+                    </p>
+                </div>
+                <ul class="text-xs font-medium text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Injection en coulisse de mur</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Finitions crépis ou bardage</li>
+                </ul>
+            </div>
+
+            <!-- SERVICE 3: CHÂSSIS & FENÊTRES -->
+            <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-navy mb-6">
+                        <i data-lucide="panel-top" class="w-7 h-7"></i>
+                    </div>
+                    <span class="text-xs font-bold text-blue-600 tracking-wider uppercase">Étanchéité & Isolation Acoustique</span>
+                    <h3 class="font-heading font-bold text-xl text-slate-900 mt-1 mb-3">Châssis & Fenêtres Haute Performance</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Pose de châssis PVC, Aluminium ou Bois à rupture de pont thermique. Double vitrage superisolant ou triple vitrage pour une imperméabilité et une isolation phonique irréprochables.
+                    </p>
+                </div>
+                <ul class="text-xs font-medium text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Châssis PVC / Alu / Bois</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Double/Triple vitrage HR+</li>
+                </ul>
+            </div>
+
+            <!-- SERVICE 4: PHOTOVOLTAÏQUE & BATTERIES -->
+            <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-yellow-50 border border-yellow-100 flex items-center justify-center text-amber-600 mb-6">
+                        <i data-lucide="sun" class="w-7 h-7"></i>
+                    </div>
+                    <span class="text-xs font-bold text-amber-600 tracking-wider uppercase">Autoproduction & Indépendance</span>
+                    <h3 class="font-heading font-bold text-xl text-slate-900 mt-1 mb-3">Photovoltaïque & Batterie de Stockage</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Produisez votre propre électricité verte et stockez le surplus dans une batterie physique intelligente pour maximiser votre taux d'autoconsommation face à la hausse des tarifs réseau.
+                    </p>
+                </div>
+                <ul class="text-xs font-medium text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Panneaux nouvelle génération</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Batteries physiques intelligentes</li>
+                </ul>
+            </div>
+
+            <!-- SERVICE 5: POMPES À CHALEUR -->
+            <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-700 mb-6">
+                        <i data-lucide="thermometer-snowflake" class="w-7 h-7"></i>
+                    </div>
+                    <span class="text-xs font-bold text-teal-700 tracking-wider uppercase">Marques Leaders Mondiales</span>
+                    <h3 class="font-heading font-bold text-xl text-slate-900 mt-1 mb-3">Pompes à Chaleur (PAC)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Remplacez le gaz ou le mazout par des pompes à chaleur air/eau ou air/air à très haut rendement (COP). Chauffage optimal et production d'eau chaude sanitaire écologique.
+                    </p>
+                </div>
+                <div class="border-t border-slate-100 pt-4">
+                    <span class="text-[11px] font-semibold text-slate-400 block mb-2">MARQUES PARTENAIRES OFFICIELLES :</span>
+                    <div class="flex items-center gap-3 text-slate-700 font-bold text-xs">
+                        <span class="bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">Daikin</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">Samsung</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">Fujitsu</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SERVICE 6: BIOMASSE ETA -->
+            <div class="bg-gradient-to-br from-brand-dark to-brand-green text-white rounded-2xl p-8 shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -right-6 -bottom-6 opacity-10 text-white">
+                    <i data-lucide="flame" class="w-40 h-40"></i>
+                </div>
+                <div class="relative z-10">
+                    <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-amber-400 mb-6 backdrop-blur-md">
+                        <i data-lucide="flame" class="w-7 h-7"></i>
+                    </div>
+                    <span class="text-xs font-bold text-amber-400 tracking-wider uppercase">Installation Exclusive Premium</span>
+                    <h3 class="font-heading font-bold text-xl text-white mt-1 mb-3">Chaudières à Biomasse (Pellets / Bois)</h3>
+                    <p class="text-slate-200 text-sm leading-relaxed mb-6">
+                        Optibat BW est installateur exclusif des chaudières autrichiennes de haute précision **ETA**. Une énergie 100% renouvelable, automatique, ultra-silencieuse et économique pour les grands volumes.
+                    </p>
+                </div>
+                <div class="border-t border-white/20 pt-4 relative z-10">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-semibold text-emerald-200">Partenaire Autrichien Exclusif</span>
+                        <span class="text-xs font-extrabold bg-amber-500 text-slate-950 px-2.5 py-1 rounded-md">ETA Heiztechnik</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="marques" class="py-16 bg-white border-y border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Excellence Technique & Fiabilité</span>
+                <h3 class="font-heading text-2xl font-bold text-slate-900 mt-1">Nos Fabricants Partenaires Sélectionnés</h3>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+                <!-- DAIKIN -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:border-brand-sedge transition group">
+                    <span class="font-heading font-black text-2xl tracking-tighter text-blue-600 group-hover:scale-105 inline-block transition-transform">DAIKIN</span>
+                    <p class="text-xs text-slate-500 mt-1">Pompes à chaleur Air/Eau & Air/Air</p>
+                </div>
+
+                <!-- SAMSUNG -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:border-brand-sedge transition group">
+                    <span class="font-heading font-black text-2xl tracking-tighter text-indigo-900 group-hover:scale-105 inline-block transition-transform">SAMSUNG</span>
+                    <p class="text-xs text-slate-500 mt-1">Solutions EHS Eco Heating</p>
+                </div>
+
+                <!-- FUJITSU -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:border-brand-sedge transition group">
+                    <span class="font-heading font-black text-2xl tracking-tighter text-red-600 group-hover:scale-105 inline-block transition-transform">FUJITSU</span>
+                    <p class="text-xs text-slate-500 mt-1">Climatisation & Chauffage haute efficacité</p>
+                </div>
+
+                <!-- ETA -->
+                <div class="p-6 rounded-2xl bg-amber-50 border border-amber-200 text-center hover:border-amber-400 transition group relative overflow-hidden">
+                    <span class="text-[9px] font-bold bg-amber-600 text-white px-2 py-0.5 rounded absolute top-2 right-2">EXCLUSIF</span>
+                    <span class="font-heading font-black text-2xl tracking-tight text-slate-900 group-hover:scale-105 inline-block transition-transform">ETA <span class="text-amber-600">AUSTRIA</span></span>
+                    <p class="text-xs text-amber-900 mt-1 font-medium">Chaudières Pellets & Biomasse</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pourquoi" class="py-20 bg-brand-softbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-brand-sedge font-bold text-xs uppercase tracking-widest bg-emerald-100/80 px-3 py-1 rounded-full">Ancrage Belge & Rigueur</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-dark mt-4 leading-tight">
+                        Pourquoi confier votre rénovation à Optibat BW ?
+                    </h2>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        L'optimisation énergétique ne s'improvise pas. Poser des panneaux sans isoler le toit ou installer une pompe à chaleur dans un bâtiment mal étanche est inefficace. Optibat BW analyse le bâtiment dans son ensemble.
+                    </p>
+
+                    <div class="mt-8 space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-green text-white flex items-center justify-center shrink-0 shadow-md">
+                                <i data-lucide="compass" class="w-6 h-6 text-brand-leaf"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">Analyse Globale & Neutre</h4>
+                                <p class="text-sm text-slate-600 mt-1">Nous combinons l'enveloppe (isolation) et la technique (chauffage, PV) pour une synergie optimale.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-green text-white flex items-center justify-center shrink-0 shadow-md">
+                                <i data-lucide="coins" class="w-6 h-6 text-brand-leaf"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">Optimisation des Primes Régionales</h4>
+                                <p class="text-sm text-slate-600 mt-1">Nous vous guidons pour maximiser le montant de vos primes à la rénovation en Région Wallonne, Bruxelles ou Flandre.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-green text-white flex items-center justify-center shrink-0 shadow-md">
+                                <i data-lucide="award" class="w-6 h-6 text-brand-leaf"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">Installation Certifiée & Garanties</h4>
+                                <p class="text-sm text-slate-600 mt-1">Équipes qualifiées, respect strict des normes de sécurité, d'étanchéité et certifications des fabricants.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PEB IMPACT BOX -->
+                <div class="bg-gradient-to-br from-brand-dark via-brand-green to-slate-900 text-white rounded-3xl p-8 shadow-2xl relative">
+                    <div class="text-center pb-6 border-b border-white/10">
+                        <h3 class="font-heading font-extrabold text-2xl">L'Impact sur votre Certificat PEB</h3>
+                        <p class="text-xs text-slate-300 mt-1">Améliorez la classe énergétique de votre logement</p>
+                    </div>
+
+                    <div class="py-6 space-y-3">
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-500 text-white font-bold text-sm shadow">
+                            <span class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4"></i> CLASSE A+ / A</span>
+                            <span class="text-xs bg-black/20 px-2 py-1 rounded">Consommation &lt; 85 kWh/m².an</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-600/80 text-white font-semibold text-sm">
+                            <span>CLASSE B</span>
+                            <span class="text-xs opacity-80">Objet de notre optimisation</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-yellow-500/30 text-yellow-200 text-sm border border-yellow-500/30">
+                            <span>CLASSE C / D</span>
+                            <span class="text-xs opacity-70">Niveau moyen actuel</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-red-500/20 text-red-200 text-sm border border-red-500/20">
+                            <span>CLASSE E / F / G</span>
+                            <span class="text-xs text-red-300 font-bold">Passoire thermique urgente</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 text-center">
+                        <p class="text-xs text-slate-300 mb-4">Gagnez jusqu'à 3 à 4 classes PEB et valorisez votre patrimoine immobilier de +15% à +25%.</p>
+                        <button onclick="openFormModal()" class="w-full bg-brand-leaf hover:bg-emerald-400 text-brand-dark font-extrabold py-3.5 px-6 rounded-xl transition shadow-lg">
+                            Évaluer le potentiel de mon bâtiment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="primes" class="py-16 bg-brand-green text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-2 text-center md:text-left">
+                <span class="bg-brand-leaf/20 text-brand-lightleaf text-xs font-bold px-3 py-1 rounded-full uppercase">Prêt à franchir le pas ?</span>
+                <h3 class="font-heading text-3xl font-extrabold">Obtenez une étude thermique complète et gratuite</h3>
+                <p class="text-slate-200 text-sm max-w-xl">
+                    Transmettez-nous les détails techniques de votre habitation via notre questionnaire guidé en 5 minutes.
+                </p>
+            </div>
+            <div class="shrink-0">
+                <button onclick="openFormModal()" class="bg-white text-brand-dark hover:bg-brand-lightleaf font-bold text-base px-8 py-4 rounded-xl shadow-xl transition transform hover:scale-105 flex items-center gap-2">
+                    <i data-lucide="edit-3" class="w-5 h-5 text-brand-sedge"></i>
+                    Remplir le Formulaire Projet
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-dark text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-brand-green flex items-center justify-center text-white">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-brand-leaf"></i>
+                        </div>
+                        <span class="font-heading font-bold text-xl text-white">OPTIBAT BW</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Spécialiste wallon de la rénovation et de l'optimisation énergétique des bâtiments résidentiels et professionnels.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Nos Expertises</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#services" class="hover:text-white transition">Toiture & Isolation</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Isolation Murs & Coulisses</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Châssis Double/Triple Vitrage</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Photovoltaïque & Batterie</a></li>
+                        <li><a href="#services" class="hover:text-white transition">PAC (Daikin, Samsung, Fujitsu)</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Biomasse ETA Austria</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Zone d'intervention</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li>Brabant Wallon (Wavre, Nivelles, Waterloo, Ottignies-LLN...)</li>
+                        <li>Région de Bruxelles-Capitale</li>
+                        <li>Province de Namur & Hainaut</li>
+                        <li>Toute la Belgique</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Contact Direct</h4>
+                    <div class="space-y-3 text-xs">
+                        <p class="flex items-center gap-2 text-slate-300">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-leaf"></i>
+                            <a href="mailto:optibatbw@gmail.com" class="hover:underline">optibatbw@gmail.com</a>
+                        </p>
+                        <p class="flex items-center gap-2 text-slate-300">
+                            <i data-lucide="clock" class="w-4 h-4 text-brand-leaf"></i>
+                            Du Lundi au Samedi : 08:00 - 19:00
+                        </p>
+                        <button onclick="openFormModal()" class="mt-2 w-full bg-brand-sedge hover:bg-brand-leaf text-white font-semibold py-2 px-3 rounded-lg text-xs transition">
+                            Envoyer mes données techniques
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Optibat BW. Tous droits réservés.</p>
+                <p class="text-[11px]">Conçu pour la transition énergétique du patrimoine bâti belge.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL QUESTIONNAIRE MULTI-ÉTAPES COMPLET -->
+    <div id="form-modal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-100 overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-200">
+            
+            <!-- MODAL HEADER -->
+            <div class="bg-brand-dark text-white px-6 py-5 flex items-center justify-between shrink-0 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-green flex items-center justify-center text-brand-leaf">
+                        <i data-lucide="file-spread-sheet" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-extrabold text-lg sm:text-xl text-white leading-tight">Étude Thermique & Technique Optibat BW</h3>
+                        <p class="text-xs text-slate-300">Questionnaire préalable pour analyse personnalisée</p>
+                    </div>
+                </div>
+                <button onclick="closeFormModal()" class="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-white/10 transition">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- EXPLANATORY NOTICE -->
+            <div class="bg-emerald-50/80 border-b border-emerald-100 px-6 py-3 flex items-start gap-3 shrink-0">
+                <i data-lucide="info" class="w-5 h-5 text-emerald-700 shrink-0 mt-0.5"></i>
+                <p class="text-xs text-emerald-900 leading-snug">
+                    Ce questionnaire prend <strong>quelques minutes à remplir</strong> mais est <strong>indispensable</strong> pour nous permettre d'analyser l'état réel de votre bâtiment et vous proposer la meilleure solution sur-mesure (dimensionnement PAC, chaudière ETA, isolation).
+                </p>
+            </div>
+
+            <!-- STEP INDICATOR -->
+            <div class="bg-slate-50 px-6 py-3 border-b border-slate-200/80 shrink-0">
+                <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
+                    <span id="step-label">Étape 1 sur 5 : Le Bâtiment</span>
+                    <span id="step-percent" class="text-brand-sedge">20%</span>
+                </div>
+                <div class="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                    <div id="step-bar" class="bg-brand-leaf h-full w-1/5 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <!-- MODAL FORM BODY WITH SCROLL -->
+            <div class="p-6 overflow-y-auto modal-scroll space-y-6 flex-1 text-slate-700 text-sm">
+                <form id="optibat-form" onsubmit="handleFormSubmit(event)">
+
+                    <!-- SECTION 1: LE BÂTIMENT -->
+                    <div id="step-1" class="form-step space-y-5">
+                        <h4 class="font-heading font-extrabold text-lg text-brand-dark flex items-center gap-2 border-b border-slate-200 pb-2">
+                            <i data-lucide="building" class="w-5 h-5 text-brand-sedge"></i> 1. Informations Générales sur le Bâtiment
+                        </h4>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Année de construction du bâtiment *</label>
+                                <input type="number" required name="annee_construction" placeholder="Ex: 1985" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-sedge focus:border-brand-sedge outline-none text-sm">
+                            </div>
+
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Certificat PEB existant ? *</label>
+                                <select required name="peb_status" onchange="togglePebClass(this)" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                                    <option value="">-- Sélectionner --</option>
+                                    <option value="Oui">Oui, le bâtiment dispose d'un PEB</option>
+                                    <option value="Non">Non / Ne sais pas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="peb-class-wrapper" class="hidden">
+                            <label class="block font-semibold text-xs text-slate-700 mb-1">Classe PEB actuelle</label>
+                            <div class="flex flex-wrap gap-2">
+                                <label class="cursor-pointer"><input type="radio" name="peb_classe" value="A" class="peer hidden"><span class="px-3 py-1.5 rounded-lg border border-slate-300 peer-checked:bg-emerald-600 peer-checked:text-white font-bold text-xs inline-block">A / A+</span></label>
+                                <label class="cursor-pointer"><input type="radio" name="peb_classe" value="B" class="peer hidden"><span class="px-3 py-1.5 rounded-lg border border-slate-300 peer-checked:bg-emerald-500 peer-checked:text-white font-bold text-xs inline-block">B</span></label>
+                                <label class="cursor-pointer"><input type="radio" name="peb_classe" value="C" class="peer hidden"><span class="px-3 py-1.5 rounded-lg border border-slate-300 peer-checked:bg-yellow-500 peer-checked:text-white font-bold text-xs inline-block">C</span></label>
+                                <label class="cursor-pointer"><input type="radio" name="peb_classe" value="D" class="peer hidden"><span class="px-3 py-1.5 rounded-lg border border-slate-300 peer-checked:bg-orange-500 peer-checked:text-white font-bold text-xs inline-block">D</span></label>
+                                <label class="cursor-pointer"><input type="radio" name="peb_classe" value="E" class="peer hidden"><span class="px-3 py-1.5 rounded-lg border border-slate-300 peer-checked:bg-red-500 peer-checked:text-white font-bold text-xs inline-block">E</span></label>
+                                <label class="cursor-pointer"><input type="radio" name="peb_classe" value="F/G" class="peer hidden"><span class="px-3 py-1.5 rounded-lg border border-slate-300 peer-checked:bg-red-700 peer-checked:text-white font-bold text-xs inline-block">F / G</span></label>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Type de Bâtiment *</label>
+                                <select required name="type_batiment" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                                    <option value="">-- Choisir --</option>
+                                    <option value="Maison 4 façades">Maison 4 façades</option>
+                                    <option value="Maison 3 façades">Maison 3 façades</option>
+                                    <option value="Maison 2 façades">Maison 2 façades</option>
+                                    <option value="Appartement">Appartement</option>
+                                    <option value="Immeuble mixte / Pro">Immeuble mixte / Pro</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Surface chauffée (m²) *</label>
+                                <input type="number" required name="surface_habitable" placeholder="Ex: 180" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Nombre d'occupants *</label>
+                                <input type="text" required name="occupants" placeholder="Ex: 4 temps plein" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+                            <h5 class="font-bold text-xs text-slate-800 uppercase tracking-wider">Isolation & Vitrage Existant</h5>
+                            
+                            <div class="grid sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Type de vitrage / Châssis</label>
+                                    <select name="type_vitrage" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                        <option value="Simple vitrage">Simple vitrage</option>
+                                        <option value="Double ancien (> 15 ans)">Double vitrage ancien</option>
+                                        <option value="Double récent (HR+)">Double vitrage récent HR+</option>
+                                        <option value="Triple vitrage">Triple vitrage</option>
+                                        <option value="Mélange">Mélange / Variable</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Isolation Toiture / Combles</label>
+                                    <input type="text" name="iso_toiture" placeholder="Ex: Non isolé OU 10cm laine de verre" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Isolation Murs / Façade</label>
+                                    <select name="iso_murs" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                        <option value="Non isolés">Murs non isolés</option>
+                                        <option value="Coulisse isolée">Coulisse / Creux injecté</option>
+                                        <option value="Par l'extérieur (ITE)">Isolation par l'extérieur</option>
+                                        <option value="Par l'intérieur (ITI)">Isolation par l'intérieur</option>
+                                        <option value="Inconnu">Ne sais pas</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Isolation Sol / Vide Sanitaire</label>
+                                    <select name="iso_sol" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                        <option value="Non isolé">Sol non isolé</option>
+                                        <option value="Isolé">Sol / Vide sanitaire isolé</option>
+                                        <option value="Inconnu">Ne sais pas</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: ÉQUIPEMENTS ACTUELS -->
+                    <div id="step-2" class="form-step hidden space-y-5">
+                        <h4 class="font-heading font-extrabold text-lg text-brand-dark flex items-center gap-2 border-b border-slate-200 pb-2">
+                            <i data-lucide="flame" class="w-5 h-5 text-brand-sedge"></i> 2. Équipements Actuels (Chauffage & Eau Chaude)
+                        </h4>
+
+                        <div class="grid sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Chauffage Principal *</label>
+                                <select required name="chauffage_actuel" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                                    <option value="">-- Sélectionner --</option>
+                                    <option value="Chaudière Gaz">Chaudière Gaz</option>
+                                    <option value="Chaudière Mazout">Chaudière Mazout</option>
+                                    <option value="Pompe à chaleur">Pompe à Chaleur</option>
+                                    <option value="Chauffage Électrique / Accumulateurs">Électrique / Accumulateurs</option>
+                                    <option value="Poêle à bois / pellets">Poêle à bois / pellets</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Âge de la chaudière / système *</label>
+                                <input type="text" required name="age_chauffage" placeholder="Ex: 18 ans" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Type de chaudière</label>
+                                <select name="techno_chaudiere" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                                    <option value="Inconnu">Ne sais pas</option>
+                                    <option value="Condensation">À Condensation (Récente)</option>
+                                    <option value="Atmosphérique / Classique">Atmosphérique / Ancien rendement</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Production d'Eau Chaude Sanitaire (ECS)</label>
+                                <select name="ecs_type" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                                    <option value="Instantannée via chaudière">Instantannée via la chaudière</option>
+                                    <option value="Boiler séparé sur chaudière">Boiler séparé couplé chaudière</option>
+                                    <option value="Boiler électrique">Boiler uniquement électrique</option>
+                                    <option value="Chauffe-eau thermodynamique">Chauffe-eau thermodynamique (PAC)</option>
+                                    <option value="Chauffe-eau solaire">Chauffe-eau solaire</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Capacité du ballon / boiler (Litres)</label>
+                                <input type="text" name="ecs_capacite" placeholder="Ex: 150 Litres ou Inconnu" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="block font-semibold text-xs text-slate-700">Émetteurs de chaleur existants dans le logement</label>
+                            <div class="grid sm:grid-cols-2 gap-3 text-xs">
+                                <label class="flex items-center gap-2 p-2.5 border rounded-xl hover:bg-slate-50"><input type="checkbox" name="emetteurs[]" value="Radiateurs haute température"> Radiateurs classiques Haute Température</label>
+                                <label class="flex items-center gap-2 p-2.5 border rounded-xl hover:bg-slate-50"><input type="checkbox" name="emetteurs[]" value="Radiateurs basse température"> Radiateurs Basse Température</label>
+                                <label class="flex items-center gap-2 p-2.5 border rounded-xl hover:bg-slate-50"><input type="checkbox" name="emetteurs[]" value="Plancher chauffant"> Plancher chauffant au sol</label>
+                                <label class="flex items-center gap-2 p-2.5 border rounded-xl hover:bg-slate-50"><input type="checkbox" name="emetteurs[]" value="Ventilo-convecteurs"> Ventilo-convecteurs</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-xs text-slate-700 mb-1">Régulation actuelle</label>
+                            <select name="regulation" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                                <option value="Vannes thermostatiques simples">Vannes thermostatiques sur radiateurs</option>
+                                <option value="Thermostat d'ambiance simple">Thermostat d'ambiance central</option>
+                                <option value="Sonde extérieure + Thermostat">Régulation par sonde extérieure + Thermostat</option>
+                                <option value="Thermostat connecté (Netatmo, Tado...)">Thermostat connecté intelligent</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 3: CONSOMMATION & ÉNERGIE -->
+                    <div id="step-3" class="form-step hidden space-y-5">
+                        <h4 class="font-heading font-extrabold text-lg text-brand-dark flex items-center gap-2 border-b border-slate-200 pb-2">
+                            <i data-lucide="zap" class="w-5 h-5 text-brand-sedge"></i> 3. Consommation Énergétique & Installation Électrique
+                        </h4>
+
+                        <div class="space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <h5 class="font-bold text-xs text-slate-800 uppercase tracking-wider">Consommation Annuelle Moyenne</h5>
+                            <div class="grid sm:grid-cols-3 gap-3">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Gaz (kWh ou m³)</label>
+                                    <input type="text" name="conso_gaz" placeholder="Ex: 22.000 kWh" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Mazout (Litres)</label>
+                                    <input type="text" name="conso_mazout" placeholder="Ex: 2.500 L" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Électricité totale (kWh)</label>
+                                    <input type="text" name="conso_elec" placeholder="Ex: 4.200 kWh" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Type de Compteur Électrique</label>
+                                <select name="compteur_type" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                                    <option value="Simple tarif">Simple tarif</option>
+                                    <option value="Bi-horaire (Jour/Nuit)">Bi-horaire (Jour/Nuit)</option>
+                                    <option value="Compteur Intelligente/Communicant">Compteur communicant / intelligent (Digital)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Type d'abonnement électrique</label>
+                                <select name="compteur_puissance" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                                    <option value="Monophasé">Monophasé (230V)</option>
+                                    <option value="Triphasé 3x230V">Triphasé 3x230V</option>
+                                    <option value="Triphasé 400V+N">Triphasé 400V + N</option>
+                                    <option value="Inconnu">Ne sais pas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-3 space-y-3">
+                            <h5 class="font-bold text-xs text-slate-800 uppercase tracking-wider">Autoproduction & Énergies Renouvelables Existantes</h5>
+                            
+                            <div class="grid sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Panneaux Photovoltaïques</label>
+                                    <input type="text" name="pv_existant" placeholder="Ex: Oui, 14 panneaux (4.5 kWc), 3 ans" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Batterie Physique / Solaire Thermique</label>
+                                    <input type="text" name="batterie_existant" placeholder="Ex: Pas de batterie, Chauffe-eau solaire présent" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 4: LOGISTIQUE CHAUFFERIE & ACCÈS -->
+                    <div id="step-4" class="form-step hidden space-y-5">
+                        <h4 class="font-heading font-extrabold text-lg text-brand-dark flex items-center gap-2 border-b border-slate-200 pb-2">
+                            <i data-lucide="wrench" class="w-5 h-5 text-brand-sedge"></i> 4. Chaufferie, Logistique & Accès Technique
+                        </h4>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Conduit / Tubage de cheminée existant</label>
+                                <input type="text" name="tubage_cheminee" placeholder="Ex: Tubé inox flexible Ø80mm OU Non tubé" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Dimensions Chaufferie (L x l x H)</label>
+                                <input type="text" name="dimensions_chaufferie" placeholder="Ex: 3m x 2m x 2.2m hauteur" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-xs text-slate-700 mb-1">Espace disponible dans la chaufferie</label>
+                            <input type="text" name="espace_dispo" placeholder="Ex: Emplacement suffisant pour ballon tampon 300L et unité intérieure PAC" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Accès à la Chaufferie</label>
+                                <select name="acces_chaufferie" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                                    <option value="Cave avec escalier droit">Cave avec escalier droit</option>
+                                    <option value="Cave avec escalier en colimaçon / étroit">Cave avec passage étroit / colimaçon</option>
+                                    <option value="Rez-de-chaussée de plain-pied">Rez-de-chaussée de plain-pied</option>
+                                    <option value="Garage / Annexe">Garage / Annexe extérieure</option>
+                                    <option value="Étage / Combles">Étage / Combles</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Facilité de manutention matériel lourd</label>
+                                <input type="text" name="manutention_remarque" placeholder="Ex: Porte de 80cm, 3 marches extérieures" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-3 space-y-3">
+                            <h5 class="font-bold text-xs text-slate-800 uppercase tracking-wider">Pour Projet Pompe à Chaleur (PAC) : Unité Extérieure</h5>
+                            <div class="grid sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Emplacement extérieur envisagé</label>
+                                    <input type="text" name="pac_emplacement_ext" placeholder="Ex: Jardin à côté du mur, terrasse arrière, cour" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Distance estimée jusqu'à la chaufferie</label>
+                                    <input type="text" name="pac_distance" placeholder="Ex: environ 5 mètres" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 5: USAGES, ATTENTES ET COORDONNÉES -->
+                    <div id="step-5" class="form-step hidden space-y-5">
+                        <h4 class="font-heading font-extrabold text-lg text-brand-dark flex items-center gap-2 border-b border-slate-200 pb-2">
+                            <i data-lucide="user-check" class="w-5 h-5 text-brand-sedge"></i> 5. Habitudes, Objectifs & Coordonnées Client
+                        </h4>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Besoins Eau Chaude Sanitaire</label>
+                                <input type="text" name="besoins_ecs" placeholder="Ex: 2 baignoires, douches simultanées le matin" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Température de consigne souhaitée (°C)</label>
+                                <input type="text" name="temperature_consigne" placeholder="Ex: 21°C dans le séjour, 19°C chambres" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Projets futurs à moyen terme</label>
+                                <input type="text" name="projets_futurs" placeholder="Ex: Achat véhicule électrique (borne), extension" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-xs text-slate-700 mb-1">Objectif Prioritaire *</label>
+                                <select required name="objectif_principal" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                                    <option value="">-- Choisir --</option>
+                                    <option value="Réduire mes factures d'énergie">Réduire massivement mes factures d'énergie</option>
+                                    <option value="Supprimer le Mazout / Gaz (Décarbonation)">Supprimer le Mazout / Gaz (Décarbonation)</option>
+                                    <option value="Améliorer le confort chaud/froid">Améliorer le confort thermique (pièces froides)</option>
+                                    <option value="Gagner en autonomie électrique">Gagner en autonomie grâce au photovoltaïque/batterie</option>
+                                    <option value="Améliorer le score PEB pour revente">Améliorer la note PEB globale</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- CLIENT CONTACT INFORMATION -->
+                        <div class="bg-brand-lightleaf/40 p-4 rounded-2xl border border-emerald-200 space-y-4">
+                            <h5 class="font-bold text-xs text-brand-dark uppercase tracking-wider flex items-center gap-1.5">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-brand-sedge"></i> Vos Coordonnées Directes
+                            </h5>
+
+                            <div class="grid sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block font-semibold text-xs text-slate-700 mb-1">Nom & Prénom *</label>
+                                    <input type="text" required name="client_nom" placeholder="Ex: Jean Dupont" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                                </div>
+                                <div>
+                                    <label class="block font-semibold text-xs text-slate-700 mb-1">Numéro de Téléphone *</label>
+                                    <input type="tel" required name="client_tel" placeholder="Ex: 0470 12 34 56" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block font-semibold text-xs text-slate-700 mb-1">Adresse Email *</label>
+                                    <input type="email" required name="client_email" placeholder="votre.email@exemple.be" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                                </div>
+                                <div>
+                                    <label class="block font-semibold text-xs text-slate-700 mb-1">Code Postal & Commune du Projet *</label>
+                                    <input type="text" required name="client_commune" placeholder="Ex: 1300 Wavre / Brabant Wallon" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-brand-sedge outline-none text-sm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+                <!-- SUCCESS MESSAGE DISPLAY -->
+                <div id="form-success" class="hidden text-center py-12 space-y-4">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                        <i data-lucide="check-circle" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-slate-900">Questionnaire Prêt pour Envoi !</h3>
+                    <p class="text-slate-600 text-sm max-w-md mx-auto">
+                        Vos informations ont été préparées. Un email récapitulatif structuré va s'ouvrir pour être transmis directement à l'équipe technique <strong>optibatbw@gmail.com</strong>.
+                    </p>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-500 max-w-md mx-auto text-left space-y-1">
+                        <p><strong>Destinataire :</strong> optibatbw@gmail.com</p>
+                        <p><strong>Sujet :</strong> Nouvelle Étude Thermique - Optibat BW</p>
+                    </div>
+                    <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+                        <button onclick="confirmAndSendMail()" class="bg-brand-green hover:bg-brand-dark text-white font-bold py-3 px-6 rounded-xl transition flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            Envoyer le Questionnaire à optibatbw@gmail.com
+                        </button>
+                        <button onclick="closeFormModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold py-3 px-6 rounded-xl transition">
+                            Fermer
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- MODAL FOOTER BUTTONS -->
+            <div id="modal-footer" class="bg-slate-50 px-6 py-4 border-t border-slate-200/80 flex items-center justify-between shrink-0">
+                <button id="btn-prev" type="button" onclick="changeStep(-1)" class="hidden bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-5 py-2.5 rounded-xl text-sm transition flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Précédent
+                </button>
+                <div class="ml-auto flex items-center gap-3">
+                    <button id="btn-next" type="button" onclick="changeStep(1)" class="bg-brand-green hover:bg-brand-dark text-white font-bold px-6 py-2.5 rounded-xl text-sm shadow transition flex items-center gap-2">
+                        Suivant <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Modal Functions
+        function openFormModal() {
+            document.getElementById('form-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            resetFormView();
+        }
+
+        function closeFormModal() {
+            document.getElementById('form-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // PEB Class Dynamic Display
+        function togglePebClass(selectObj) {
+            const wrapper = document.getElementById('peb-class-wrapper');
+            if (selectObj.value === 'Oui') {
+                wrapper.classList.remove('hidden');
+            } else {
+                wrapper.classList.add('hidden');
+            }
+        }
+
+        // Multi-step Wizard Management
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function updateStepUI() {
+            // Update steps visibility
+            for (let i = 1; i <= totalSteps; i++) {
+                const stepElem = document.getElementById(`step-${i}`);
+                if (stepElem) {
+                    if (i === currentStep) {
+                        stepElem.classList.remove('hidden');
+                    } else {
+                        stepElem.classList.add('hidden');
+                    }
+                }
+            }
+
+            // Update Header & Progress Bar
+            const labels = [
+                "Étape 1 sur 5 : Le Bâtiment",
+                "Étape 2 sur 5 : Équipements Actuels",
+                "Étape 3 sur 5 : Consommation & Énergie",
+                "Étape 4 sur 5 : Chaufferie & Accès Technique",
+                "Étape 5 sur 5 : Usages, Attentes & Coordonnées"
+            ];
+            document.getElementById('step-label').innerText = labels[currentStep - 1];
+            const percent = Math.round((currentStep / totalSteps) * 100);
+            document.getElementById('step-percent').innerText = `${percent}%`;
+            document.getElementById('step-bar').style.width = `${percent}%`;
+
+            // Buttons visibility
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+
+            if (currentStep === 1) {
+                btnPrev.classList.add('hidden');
+            } else {
+                btnPrev.classList.remove('hidden');
+            }
+
+            if (currentStep === totalSteps) {
+                btnNext.innerHTML = 'Terminer & Préparer l\'Envoi <i data-lucide="check" class="w-4 h-4"></i>';
+                btnNext.classList.remove('bg-brand-green');
+                btnNext.classList.add('bg-brand-leaf', 'text-brand-dark');
+            } else {
+                btnNext.innerHTML = 'Suivant <i data-lucide="arrow-right" class="w-4 h-4"></i>';
+                btnNext.classList.add('bg-brand-green');
+                btnNext.classList.remove('bg-brand-leaf', 'text-brand-dark');
+            }
+            lucide.createIcons();
+        }
+
+        function changeStep(delta) {
+            const form = document.getElementById('optibat-form');
+            
+            // Validate required fields on current step before moving forward
+            if (delta > 0) {
+                const currentStepElem = document.getElementById(`step-${currentStep}`);
+                const inputs = currentStepElem.querySelectorAll('input[required], select[required]');
+                let valid = true;
+                inputs.forEach(input => {
+                    if (!input.checkValidity()) {
+                        input.reportValidity();
+                        valid = false;
+                        return;
+                    }
+                });
+                if (!valid) return;
+            }
+
+            if (currentStep + delta >= 1 && currentStep + delta <= totalSteps) {
+                currentStep += delta;
+                updateStepUI();
+            } else if (currentStep + delta > totalSteps) {
+                submitFormData();
+            }
+        }
+
+        function resetFormView() {
+            currentStep = 1;
+            document.getElementById('optibat-form').classList.remove('hidden');
+            document.getElementById('form-success').classList.add('hidden');
+            document.getElementById('modal-footer').classList.remove('hidden');
+            updateStepUI();
+        }
+
+        let compiledMailto = "";
+
+        function submitFormData() {
+            const form = document.getElementById('optibat-form');
+            const formData = new FormData(form);
+
+            let bodyText = `DEMANDE D'ÉTUDE THERMIQUE ET TECHNIQUE - OPTIBAT BW\n`;
+            bodyText += `===================================================\n\n`;
+
+            bodyText += `--- 1. INFORMATIONS BÂTIMENT ---\n`;
+            bodyText += `• Année de construction: ${formData.get('annee_construction') || 'N/C'}\n`;
+            bodyText += `• Certificat PEB: ${formData.get('peb_status') || 'N/C'}`;
+            if (formData.get('peb_classe')) bodyText += ` (Classe: ${formData.get('peb_classe')})`;
+            bodyText += `\n• Type de bâtiment: ${formData.get('type_batiment') || 'N/C'}\n`;
+            bodyText += `• Surface habitable chauffée: ${formData.get('surface_habitable') || 'N/C'} m²\n`;
+            bodyText += `• Nombre d'occupants: ${formData.get('occupants') || 'N/C'}\n`;
+            bodyText += `• Vitrage actuel: ${formData.get('type_vitrage') || 'N/C'}\n`;
+            bodyText += `• Isolation Toiture: ${formData.get('iso_toiture') || 'N/C'}\n`;
+            bodyText += `• Isolation Murs: ${formData.get('iso_murs') || 'N/C'}\n`;
+            bodyText += `• Isolation Sol: ${formData.get('iso_sol') || 'N/C'}\n\n`;
+
+            bodyText += `--- 2. ÉQUIPEMENTS ACTUELS ---\n`;
+            bodyText += `• Chauffage principal: ${formData.get('chauffage_actuel') || 'N/C'} (${formData.get('age_chauffage') || 'Âge N/C'})\n`;
+            bodyText += `• Type chaudière: ${formData.get('techno_chaudiere') || 'N/C'}\n`;
+            bodyText += `• Production ECS: ${formData.get('ecs_type') || 'N/C'} (Ballon: ${formData.get('ecs_capacite') || 'N/C'})\n`;
+            
+            const emetteurs = formData.getAll('emetteurs[]');
+            bodyText += `• Émetteurs: ${emetteurs.length > 0 ? emetteurs.join(', ') : 'Non renseigné'}\n`;
+            bodyText += `• Régulation: ${formData.get('regulation') || 'N/C'}\n\n`;
+
+            bodyText += `--- 3. CONSOMMATION & ÉNERGIE ---\n`;
+            bodyText += `• Conso Gaz: ${formData.get('conso_gaz') || 'N/C'}\n`;
+            bodyText += `• Conso Mazout: ${formData.get('conso_mazout') || 'N/C'}\n`;
+            bodyText += `• Conso Électricité: ${formData.get('conso_elec') || 'N/C'}\n`;
+            bodyText += `• Type compteur: ${formData.get('compteur_type') || 'N/C'}\n`;
+            bodyText += `• Raccordement elec: ${formData.get('compteur_puissance') || 'N/C'}\n`;
+            bodyText += `• Panneaux PV actuels: ${formData.get('pv_existant') || 'Aucun / Non renseigné'}\n`;
+            bodyText += `• Batterie / Solaire therm.: ${formData.get('batterie_existant') || 'Non'}\n\n`;
+
+            bodyText += `--- 4. CHAUFFERIE & LOGISTIQUE ---\n`;
+            bodyText += `• Tubage cheminée: ${formData.get('tubage_cheminee') || 'N/C'}\n`;
+            bodyText += `• Dimensions chaufferie: ${formData.get('dimensions_chaufferie') || 'N/C'}\n`;
+            bodyText += `• Espace disponible: ${formData.get('espace_dispo') || 'N/C'}\n`;
+            bodyText += `• Accès chaufferie: ${formData.get('acces_chaufferie') || 'N/C'}\n`;
+            bodyText += `• Manutention: ${formData.get('manutention_remarque') || 'N/C'}\n`;
+            bodyText += `• Emplacement ext. PAC: ${formData.get('pac_emplacement_ext') || 'N/C'} (Distance: ${formData.get('pac_distance') || 'N/C'})\n\n`;
+
+            bodyText += `--- 5. HABITUDES & COORDONNÉES CLIENT ---\n`;
+            bodyText += `• Besoins ECS spécifiques: ${formData.get('besoins_ecs') || 'Standard'}\n`;
+            bodyText += `• Température consigne: ${formData.get('temperature_consigne') || 'N/C'}\n`;
+            bodyText += `• Projets futurs: ${formData.get('projets_futurs') || 'Aucun'}\n`;
+            bodyText += `• Objectif prioritaire: ${formData.get('objectif_principal') || 'N/C'}\n\n`;
+
+            bodyText += `• NOM & PRÉNOM: ${formData.get('client_nom')}\n`;
+            bodyText += `• TÉLÉPHONE: ${formData.get('client_tel')}\n`;
+            bodyText += `• EMAIL: ${formData.get('client_email')}\n`;
+            bodyText += `• LOCALITÉ / COMMUNE: ${formData.get('client_commune')}\n`;
+
+            const subject = encodeURIComponent(`Nouvelle demande d'étude thermique - ${formData.get('client_nom')}`);
+            const body = encodeURIComponent(bodyText);
+
+            compiledMailto = `mailto:optibatbw@gmail.com?subject=${subject}&body=${body}`;
+
+            // Hide form and show success state
+            document.getElementById('optibat-form').classList.add('hidden');
+            document.getElementById('modal-footer').classList.add('hidden');
+            document.getElementById('form-success').classList.remove('hidden');
+        }
+
+        function confirmAndSendMail() {
+            if (compiledMailto) {
+                window.location.href = compiledMailto;
+            }
+        }
+    </script>
+</body>
+</html>
